@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.Display;
@@ -11,21 +12,26 @@ import android.view.WindowManager;
 /**
  * Created by Игорь on 03.08.2016.
  */
-public class CanvasView extends View {
+public class CanvasView extends View implements ICanvasView {
     private static int width;
     private static int height;
     private GameManager gameManager;
+    private Paint paint;
+    private Canvas canvas;
 
     public CanvasView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initWidthAndHeight(context);
+        initPaint();
         gameManager = new GameManager(this, width, height);
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        gameManager.onDraw(canvas);
+        this.canvas = canvas;
+        gameManager.onDraw();
     }
 
     private void initWidthAndHeight(Context context) {
@@ -37,4 +43,14 @@ public class CanvasView extends View {
         height = point.y;
     }
 
+    @Override
+    public void drawCircle(MainCircle circle) {
+        canvas.drawCircle(circle.getX(), circle.getY(), circle.getRadius(), paint);
+    }
+
+    private void initPaint() {
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.FILL);
+    }
 }
