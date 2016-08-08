@@ -10,7 +10,7 @@ public class GameManager {
     private static int width;
     private static int height;
     private MainCircle mainCircle;
-    private ArrayList<SimpleCircle> circles;
+    private ArrayList<EnemySircle> circles;
     private CanvasView canvasView;
 
     public GameManager(CanvasView canvasView, int w, int h) {
@@ -34,6 +34,7 @@ public class GameManager {
         for (int i = 0; i < MAX_CIRCLES; i++) {
             circles.add(EnemySircle.getRandomCircle());
         }
+        calculateAndSetCirclesColor();
     }
 
     public void onDraw() {
@@ -49,5 +50,11 @@ public class GameManager {
 
     public void onTouchEvent(int x, int y) {
         mainCircle.moveMainCircleWhenTouchAt(x, y);
+    }
+
+    private void calculateAndSetCirclesColor() {
+        for (EnemySircle cir : circles) {
+            cir.setEnemyOrFoodColor(mainCircle);
+        }
     }
 }
