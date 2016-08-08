@@ -5,4 +5,6 @@ package com.example.myapplication;
  */
 public interface ICanvasView {
     void drawCircle(SimpleCircle circle);
+
+    void redraw();
 }
