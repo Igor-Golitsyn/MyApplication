@@ -7,10 +7,16 @@ import android.graphics.Paint;
  * Created by Игорь on 08.08.2016.
  */
 public class GameManager {
+    private static int width;
+    private static int height;
     private MainCircle mainCircle;
     private Paint paint;
+    private CanvasView canvasView;
 
-    public GameManager() {
+    public GameManager(CanvasView canvasView, int w, int h) {
+        this.canvasView = canvasView;
+        width = w;
+        height = h;
         initMainCircle();
         initPaint();
     }
@@ -20,7 +26,7 @@ public class GameManager {
     }
 
     private void initMainCircle() {
-        mainCircle = new MainCircle(200, 500);
+        mainCircle = new MainCircle(width / 2, height / 2);
     }
 
     private void initPaint() {
