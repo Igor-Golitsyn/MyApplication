@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
+
 import java.util.Random;
 
 /**
@@ -9,6 +11,7 @@ public class EnemySircle extends SimpleCircle {
 
     public static final int FROM_RADIUS = 10;
     public static final int TO_RADIUS = 110;
+    public static final int ENEMY_COLOR = Color.RED;
 
     public EnemySircle(int x, int y, int radius) {
         super(x, y, radius);
@@ -19,6 +22,8 @@ public class EnemySircle extends SimpleCircle {
         int x = random.nextInt(GameManager.getWidth());
         int y = random.nextInt(GameManager.getHeight());
         int radius = FROM_RADIUS + random.nextInt(TO_RADIUS - FROM_RADIUS);
-        return new EnemySircle(x, y, radius);
+        EnemySircle enemySircle = new EnemySircle(x, y, radius);
+        enemySircle.setColor(ENEMY_COLOR);
+        return enemySircle;
     }
 }
