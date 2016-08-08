@@ -40,7 +40,6 @@ public class SimpleCircle {
     }
 
     public boolean isIntersect(SimpleCircle mainCircleArea) {
-
         return radius + mainCircleArea.radius >= Math.sqrt(Math.pow(x - mainCircleArea.x, 2) + Math.pow(y - mainCircleArea.y, 2));
     }
 }
