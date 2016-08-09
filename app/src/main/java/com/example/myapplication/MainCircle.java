@@ -25,4 +25,10 @@ public class MainCircle extends SimpleCircle {
     public void initRadius() {
         radius = INIT_RADIUS;
     }
+
+    public void growRadius(EnemySircle sircle) {
+        //pi*newR^2=pi*r^2+pi*reat^2
+        //newR=sqrt(r^2+reat^2)
+        radius = (int) Math.sqrt(Math.pow(radius, 2) + Math.pow(sircle.radius, 2));
+    }
 }
