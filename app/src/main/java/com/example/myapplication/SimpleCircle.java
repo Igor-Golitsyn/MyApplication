@@ -3,27 +3,27 @@ package com.example.myapplication;
 /**
  * Created by Игорь on 08.08.2016.
  */
-public class SimpleCircle {
-    protected int x;
-    protected int y;
-    protected int radius;
+class SimpleCircle {
+    int x;
+    int y;
+    int radius;
     private int color;
 
-    public SimpleCircle(int x, int y, int radius) {
+    SimpleCircle(int x, int y, int radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
     }
 
-    public int getX() {
+    int getX() {
         return x;
     }
 
-    public int getY() {
+    int getY() {
         return y;
     }
 
-    public int getRadius() {
+    int getRadius() {
         return radius;
     }
 
@@ -35,11 +35,11 @@ public class SimpleCircle {
         this.color = color;
     }
 
-    public SimpleCircle getCircleArea() {
+    SimpleCircle getCircleArea() {
         return new SimpleCircle(x, y, radius * 3);
     }
 
-    public boolean isIntersect(SimpleCircle mainCircleArea) {
+    boolean isIntersect(SimpleCircle mainCircleArea) {
         return radius + mainCircleArea.radius >= Math.sqrt(Math.pow(x - mainCircleArea.x, 2) + Math.pow(y - mainCircleArea.y, 2));
     }
 }

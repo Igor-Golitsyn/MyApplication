@@ -5,15 +5,15 @@ import java.util.ArrayList;
 /**
  * Created by Игорь on 08.08.2016.
  */
-public class GameManager {
-    public static final int MAX_CIRCLES = 10;
+class GameManager {
+    private static final int MAX_CIRCLES = 10;
     private static int width;
     private static int height;
     private MainCircle mainCircle;
     private ArrayList<EnemySircle> circles;
     private CanvasView canvasView;
 
-    public GameManager(CanvasView canvasView, int w, int h) {
+    GameManager(CanvasView canvasView, int w, int h) {
         this.canvasView = canvasView;
         width = w;
         height = h;
@@ -21,11 +21,11 @@ public class GameManager {
         initEnemyCircles();
     }
 
-    public static int getWidth() {
+    static int getWidth() {
         return width;
     }
 
-    public static int getHeight() {
+    static int getHeight() {
         return height;
     }
 
@@ -42,7 +42,7 @@ public class GameManager {
         calculateAndSetCirclesColor();
     }
 
-    public void onDraw() {
+    void onDraw() {
         canvasView.drawCircle(mainCircle);
         for (SimpleCircle cir : circles) {
             canvasView.drawCircle(cir);
@@ -53,7 +53,7 @@ public class GameManager {
         mainCircle = new MainCircle(width / 2, height / 2);
     }
 
-    public void onTouchEvent(int x, int y) {
+    void onTouchEvent(int x, int y) {
         mainCircle.moveMainCircleWhenTouchAt(x, y);
         checkCollision();
         moveCircles();
